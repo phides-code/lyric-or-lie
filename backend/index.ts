@@ -1,5 +1,6 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
+import getPoetry from './handlers/getPoetry';
 
 dotenv.config();
 
@@ -7,9 +8,12 @@ const app: Express = express();
 const port = process.env.PORT;
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('Express + TypeScript Server');
+    // res.send('Express + TypeScript Server');
+    return res.status(200).json({ status: 200, message: 'OK' });
 });
 
+app.get('/getpoetry', getPoetry);
+
 app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+    console.log(`*** Server is running on port ${port} ***`);
 });
