@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const getPoetry_1 = __importDefault(require("./handlers/getPoetry"));
+const getLyrics_1 = __importDefault(require("./handlers/getLyrics"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
     return res.status(200).json({ status: 200, message: 'OK' });
 });
 app.get('/getpoetry', getPoetry_1.default);
+app.get('/getlyrics', getLyrics_1.default);
 app.listen(port, () => {
     console.log(`*** Server is running on port ${port} ***`);
 });

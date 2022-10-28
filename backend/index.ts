@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import getPoetry from './handlers/getPoetry';
+import getLyrics from './handlers/getLyrics';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.get('/getpoetry', getPoetry);
+app.get('/getlyrics', getLyrics);
 
 app.listen(port, () => {
     console.log(`*** Server is running on port ${port} ***`);

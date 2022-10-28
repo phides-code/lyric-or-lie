@@ -14,21 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const moment_1 = __importDefault(require("moment"));
-const getPoetry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const jsdom_1 = __importDefault(require("jsdom"));
+const getLyrics = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     console.log('[' +
         (0, moment_1.default)(new Date()).format('YYYY-MM-DD - HH:mm:ss') +
-        ']: running getPoetry');
+        ']: running getLyrics');
     try {
-        const axiosResponse = yield axios_1.default.get('https://www.poemist.com/api/v1/randompoems');
-        const poem = axiosResponse.data[0].content
-            .split('\n')
-            .filter((line) => line !== '' && !line.includes('['));
-        const linecount = poem.length;
+        const axiosResponse = yield axios_1.default.get('https://www.bestrandoms.com/random-lyrics');
+        const dom = new jsdom_1.default.JSDOM(axiosResponse.data);
+        const rawLyrics = dom.window.document.querySelector('.content > ul > li > pre');
+        const lyrics = rawLyrics.innerHTML;
+        const lyricLines = lyrics === null || lyrics === void 0 ? void 0 : lyrics.split('<br>').filter((line) => line !== '' && !line.includes('[')).map((line) => line.replaceAll('\n', ''));
+        const linecount = lyricLines.length;
         const startIndex = Math.floor(Math.random() * (linecount - 3));
-        const poemExcerpt = poem.slice(startIndex, startIndex + 3);
+        const lyricsExcerpt = lyricLines.slice(startIndex, startIndex + 3);
         return res.status(200).json({
             status: 200,
-            data: poemExcerpt,
+            data: lyricsExcerpt,
         });
     }
     catch (err) {
@@ -37,4 +39,4 @@ const getPoetry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         return res.status(500).json({ status: 500, error: err.message });
     }
 });
-exports.default = getPoetry;
+exports.default = getLyrics;
