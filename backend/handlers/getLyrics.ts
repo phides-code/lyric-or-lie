@@ -9,6 +9,27 @@ const getLyrics = async () => {
             'https://www.bestrandoms.com/random-lyrics'
         );
         const dom = new jsdom.JSDOM(axiosResponse.data);
+
+        const rawArtist: Element = dom.window.document.querySelector(
+            '.content > ul > li > p > span'
+        )!;
+        const artist = rawArtist.innerHTML;
+
+        const rawTitle: Element = dom.window.document.querySelector(
+            '.content > ul > li > p > span:nth-child(2)'
+        )!;
+
+        let title: string;
+
+        if (rawTitle.innerHTML.includes('Lyrics')) {
+            title = rawTitle.innerHTML.substring(
+                0,
+                rawTitle.innerHTML.length - 7
+            );
+        } else {
+            title = rawTitle.innerHTML;
+        }
+
         const rawLyrics: Element = dom.window.document.querySelector(
             '.content > ul > li > pre'
         )!;
@@ -24,10 +45,12 @@ const getLyrics = async () => {
         return {
             status: 200,
             words: lyricsExcerpt,
+            artist: artist,
+            title: title,
             type: 'lyrics',
         };
     } catch (err: any) {
-        console.log('got error: ');
+        console.log('getLyrics caught error: ');
         console.log(err.message);
         return { status: 500, error: err.message };
     }

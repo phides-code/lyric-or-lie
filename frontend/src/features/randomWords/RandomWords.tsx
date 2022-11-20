@@ -14,13 +14,10 @@ const RandomWords = () => {
 
     useEffect(() => {
         if (randomWordsStatus === 'idle' && randomWords.words.length === 0) {
-            console.log('running dispatch ...');
+            console.log('useEffect running dispatch ...');
             dispatch(fetchRandomWords());
         }
     }, [randomWordsStatus, dispatch, randomWords.words.length]);
-
-    console.log('got randomWords: ');
-    console.log(randomWords);
 
     return (
         <div>

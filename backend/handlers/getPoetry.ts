@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const getPoetry = async () => {
-    console.log('running getLyrics');
+    console.log('running getPoetry');
 
     try {
         const axiosResponse = await axios.get('https://poetrydb.org/random');
@@ -13,13 +13,18 @@ const getPoetry = async () => {
         const startIndex = Math.floor(Math.random() * (linecount - 3));
         const poemExcerpt = poem.slice(startIndex, startIndex + 3);
 
+        const artist = axiosResponse.data[0].author;
+        const title = axiosResponse.data[0].title;
+
         return {
             status: 200,
             words: poemExcerpt,
+            artist: artist,
+            title: title,
             type: 'poetry',
         };
     } catch (err: any) {
-        console.log('got error: ');
+        console.log('getPoetry caught error: ');
         console.log(err.message);
         return { status: 500, error: err.message };
     }

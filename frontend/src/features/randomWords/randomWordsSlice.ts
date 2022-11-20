@@ -5,8 +5,10 @@ import { RootState } from '../../app/store';
 type RandomWordsState = {
     randomWords: {
         status: number | null;
-        type: string;
         words: string[];
+        artist: string;
+        title: string;
+        type: string;
     };
     status: 'idle' | 'loading' | 'failed';
 };
@@ -14,8 +16,10 @@ type RandomWordsState = {
 const initialState: RandomWordsState = {
     randomWords: {
         status: null,
-        type: '',
         words: [],
+        artist: '',
+        title: '',
+        type: '',
     },
     status: 'idle',
 };
@@ -24,8 +28,7 @@ export const fetchRandomWords = createAsyncThunk(
     'randomWords/fetchRandomWords',
     async () => {
         const axiosResponse = await axios.get('/api/getrandomwords');
-        console.log('*** got data: ');
-        console.log(axiosResponse.data);
+
         return axiosResponse.data;
     }
 );
