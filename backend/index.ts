@@ -6,7 +6,7 @@ import path from 'path';
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../../frontend/build')));
