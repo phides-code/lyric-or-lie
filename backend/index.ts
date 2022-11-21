@@ -11,9 +11,9 @@ const port = process.env.PORT;
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../frontend/build')));
 
-app.get('/', (req: Request, res: Response) => {
-    return res.status(200).json({ status: 200, message: 'OK' });
-});
+// app.get('/', (req: Request, res: Response) => {
+//     return res.status(200).json({ status: 200, message: 'OK' });
+// });
 
 app.get('/api/getrandomwords', getRandomWords);
 
