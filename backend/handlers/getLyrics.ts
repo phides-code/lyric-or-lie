@@ -10,6 +10,9 @@ const getLyrics = async () => {
         );
         const dom = new jsdom.JSDOM(axiosResponse.data);
 
+        console.log('*** dom');
+        console.log(dom);
+
         const rawArtist: Element = dom.window.document.querySelector(
             '.content > ul > li > p > span'
         )!;
