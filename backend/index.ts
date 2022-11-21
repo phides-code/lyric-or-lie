@@ -17,6 +17,10 @@ app.get('/', (req: Request, res: Response) => {
 
 app.get('/api/getrandomwords', getRandomWords);
 
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
+});
+
 app.listen(port, () => {
     console.log(`*** Server is running on port ${port} ***`);
 });
