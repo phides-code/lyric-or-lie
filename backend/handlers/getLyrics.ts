@@ -8,9 +8,13 @@ const getLyrics = async () => {
         const axiosResponse = await axios.get(
             'https://www.bestrandoms.com/random-lyrics'
         );
+
+        console.log('*** got axiosResponse: ');
+        console.log(axiosResponse);
+
         const dom = new jsdom.JSDOM(axiosResponse.data);
 
-        console.log('*** dom');
+        console.log('*** got dom: ');
         console.log(dom);
 
         const rawArtist: Element = dom.window.document.querySelector(
