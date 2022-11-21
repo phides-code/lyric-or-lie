@@ -47,7 +47,7 @@ const getLyrics = async () => {
             words: lyricsExcerpt,
             artist: artist,
             title: title,
-            type: 'lyrics',
+            type: 'song',
         };
     } catch (err: any) {
         console.log('getLyrics caught error: ');

@@ -21,7 +21,7 @@ const getPoetry = async () => {
             words: poemExcerpt,
             artist: artist,
             title: title,
-            type: 'poetry',
+            type: 'poem',
         };
     } catch (err: any) {
         console.log('getPoetry caught error: ');

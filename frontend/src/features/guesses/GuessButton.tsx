@@ -5,7 +5,7 @@ import {
 } from '../randomWords/randomWordsSlice';
 import { guessAdded } from './guessesSlice';
 
-type GuessType = 'lyrics' | 'poetry';
+type GuessType = 'song' | 'poem';
 
 const GuessButton = ({ guessType }: { guessType: GuessType }) => {
     const randomWords = useAppSelector(selectRandomWords);
