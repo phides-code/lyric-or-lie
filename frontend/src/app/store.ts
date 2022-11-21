@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import randomWordsReducer from '../features/randomWords/randomWordsSlice';
+import guessesReducer from '../features/guesses/guessesSlice';
 
 export const store = configureStore({
     reducer: {
         counter: counterReducer,
         randomWords: randomWordsReducer,
+        guesses: guessesReducer,
     },
 });
 

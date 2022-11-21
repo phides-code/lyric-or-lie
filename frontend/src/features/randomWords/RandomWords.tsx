@@ -20,7 +20,14 @@ const RandomWords = () => {
     }, [randomWordsStatus, dispatch, randomWords.words.length]);
 
     return (
-        <div>
+        <div
+            style={{
+                border: '1px solid grey',
+                borderRadius: '0.4rem',
+                width: '20rem',
+                padding: '0.2rem',
+            }}
+        >
             {randomWords.words.map((randomLine) => (
                 <div key={Math.floor(Math.random() * 99999)}>{randomLine}</div>
             ))}
