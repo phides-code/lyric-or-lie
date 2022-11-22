@@ -5,6 +5,8 @@ const getLyrics = async () => {
     console.log('running getLyrics');
 
     try {
+        console.log('*** running axios...');
+
         const axiosResponse = await axios.get(
             'https://www.bestrandoms.com/random-lyrics'
         );
