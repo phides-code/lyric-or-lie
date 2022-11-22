@@ -1,4 +1,6 @@
 import jsdom from 'jsdom';
+// import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 const getLyrics = async () => {
     console.log('running getLyrics');
