@@ -1,23 +1,16 @@
-import axios from 'axios';
 import jsdom from 'jsdom';
 
 const getLyrics = async () => {
     console.log('running getLyrics');
 
     try {
-        console.log('*** running axios...');
-
-        const axiosResponse = await axios.get(
+        const fetchResponse = await fetch(
             'https://www.bestrandoms.com/random-lyrics'
         );
 
-        console.log('*** got axiosResponse: ');
-        console.log(axiosResponse);
+        const fetchResponseHtml = await fetchResponse.text();
 
-        const dom = new jsdom.JSDOM(axiosResponse.data);
-
-        console.log('*** got dom: ');
-        console.log(dom);
+        const dom = new jsdom.JSDOM(fetchResponseHtml);
 
         const rawArtist: Element = dom.window.document.querySelector(
             '.content > ul > li > p > span'
