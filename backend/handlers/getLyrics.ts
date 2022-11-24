@@ -12,6 +12,9 @@ const getLyrics = async () => {
 
         const fetchResponseHtml = await fetchResponse.text();
 
+        console.log('*** got fetchResponseHtml: ');
+        console.log(fetchResponseHtml);
+
         const dom = new jsdom.JSDOM(fetchResponseHtml);
 
         const rawArtist: Element = dom.window.document.querySelector(
