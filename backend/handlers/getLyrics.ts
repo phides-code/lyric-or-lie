@@ -7,7 +7,13 @@ const getLyrics = async () => {
 
     try {
         const fetchResponse = await fetch(
-            'https://www.bestrandoms.com/random-lyrics'
+            'https://www.bestrandoms.com/random-lyrics',
+            {
+                headers: {
+                    'user-agent':
+                        'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
+                },
+            }
         );
 
         const fetchResponseHtml = await fetchResponse.text();
