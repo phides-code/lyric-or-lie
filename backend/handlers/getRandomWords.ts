@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import getLyrics from './getLyrics';
+import getNonsense from './getNonsense';
 import getPoetry from './getPoetry';
 import moment from 'moment';
 
@@ -16,7 +16,7 @@ const getRandomWords = async (req: Request, res: Response) => {
 
     let randomWordsRes: RandomResponse =
         Math.floor(Math.random() * 2) === 1
-            ? await getLyrics()
+            ? await getNonsense()
             : await getPoetry();
 
     res.status(randomWordsRes.status).json(randomWordsRes);

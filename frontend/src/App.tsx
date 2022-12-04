@@ -10,7 +10,7 @@ const App = () => {
             }}
         >
             <RandomWords />
-            <GuessButton guessType={'song'} />
+            <GuessButton guessType={'nonsense'} />
             <GuessButton guessType={'poem'} />
             <GuessList />
         </div>

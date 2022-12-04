@@ -1,1 +1,1 @@
-Guess whether random words are song lyrics or poetry.
+Guess whether random words are nonsense or poetry.
