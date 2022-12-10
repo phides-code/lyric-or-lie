@@ -28,9 +28,17 @@ const RandomWords = () => {
                 padding: '0.2rem',
             }}
         >
-            {randomWords.words.map((randomLine) => (
-                <div key={Math.floor(Math.random() * 99999)}>{randomLine}</div>
-            ))}
+            {randomWordsStatus === 'failed' ? (
+                <>Something went wrong. press any button</>
+            ) : (
+                <>
+                    {randomWords.words.map((randomLine) => (
+                        <div key={Math.floor(Math.random() * 99999)}>
+                            {randomLine}
+                        </div>
+                    ))}
+                </>
+            )}
         </div>
     );
 };
